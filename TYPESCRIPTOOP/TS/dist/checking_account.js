@@ -39,7 +39,6 @@ var CheckingAccount = /** @class */ (function (_super) {
         return _this;
         // other code here
     }
-    CheckingAccount.prototype.getAccountInfo = function () { };
     return CheckingAccount;
 }(BankAccount));
 export { CheckingAccount };

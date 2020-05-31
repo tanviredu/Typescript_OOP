@@ -1,5 +1,6 @@
 import { BankAccount } from "./bank_account";
 import {AccountType} from "./enums";
+import  {AccountSettings} from "./interfaces"
 
 export class SavingAccount extends BankAccount{
     private _interestRate:number;
@@ -7,7 +8,7 @@ export class SavingAccount extends BankAccount{
     
     // add the constructor
     // and also feed the base constructor
-    constructor(accountSettings:any){
+    constructor(accountSettings:AccountSettings){
         super(accountSettings);
         
         // take the extra property
@@ -35,7 +36,5 @@ export class SavingAccount extends BankAccount{
         this.balance = this.balance + (this.balance*(this._interestRate/100));
     }
     
-    getAccountInfo(){
-        
-    }
+
 }

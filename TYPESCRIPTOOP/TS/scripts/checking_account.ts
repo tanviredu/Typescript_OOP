@@ -34,6 +34,6 @@ export class CheckingAccount extends BankAccount{
         // other code here
     }
     
-    getAccountInfo(){}
+
 }
 

@@ -1,3 +1,4 @@
+import { Constants } from "./Constants";
 var BankAccount = /** @class */ (function () {
     // constructor takes a json thats why any type
     function BankAccount(accountSettings) {
@@ -6,6 +7,13 @@ var BankAccount = /** @class */ (function () {
         this.title = accountSettings.title;
         this.balance = accountSettings.balance;
     }
+    // adding a abstract method definition
+    BankAccount.prototype.getAccountInfo = function () {
+        return {
+            routingNumber: Constants.ROUTING_NUMBER,
+            bankNumber: Constants.BANKING_NUMBER
+        };
+    };
     Object.defineProperty(BankAccount.prototype, "balance", {
         // setting getter and setter for the 
         // account

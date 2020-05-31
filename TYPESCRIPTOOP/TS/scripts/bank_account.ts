@@ -1,6 +1,8 @@
 import {AccountType} from './enums';
+import {Depositwithdrawal,Account,AccountSettings, AccountInfo} from "./interfaces"
 
-export abstract class BankAccount{
+import {Constants} from "./Constants";
+export abstract class BankAccount implements Account{
     private _balance = 0;
     id:number;
     title:string;
@@ -10,7 +12,7 @@ export abstract class BankAccount{
     abstract accountType:AccountType;
     
     // constructor takes a json thats why any type
-    constructor(accountSettings:any){
+    constructor(accountSettings:AccountSettings){
         this.id = accountSettings.id;
         this.title = accountSettings.title;
         this.balance = accountSettings.balance;
@@ -18,7 +20,12 @@ export abstract class BankAccount{
     
     
     // adding a abstract method definition
-    abstract getAccountInfo():any;
+     getAccountInfo():AccountInfo<string,number>{
+        return {
+            routingNumber: Constants.ROUTING_NUMBER,
+            bankNumber:Constants.BANKING_NUMBER
+        }
+    }
     
     // setting getter and setter for the 
     // account
