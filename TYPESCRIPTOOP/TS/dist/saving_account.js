@@ -29,6 +29,12 @@ var SavingAccount = /** @class */ (function (_super) {
         }, 6000);
         return _this;
     }
+    // we override the default deposit function
+    // for the BankAccount
+    SavingAccount.prototype.deposit = function (amount) {
+        var newAmount = amount + (amount * (this._interestRate / 100));
+        this.balance += newAmount;
+    };
     // make a function that will add interest
     // and increase the balance
     SavingAccount.prototype.addInterest = function () {
