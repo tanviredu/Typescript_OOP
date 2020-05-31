@@ -27,4 +27,8 @@ export class SavingAccount extends BankAccount{
     private addInterest(){
         this.balance = this.balance + (this.balance*(this._interestRate/100));
     }
+    
+    getAccountInfo(){
+        
+    }
 }

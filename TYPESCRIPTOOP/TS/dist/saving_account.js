@@ -34,6 +34,8 @@ var SavingAccount = /** @class */ (function (_super) {
     SavingAccount.prototype.addInterest = function () {
         this.balance = this.balance + (this.balance * (this._interestRate / 100));
     };
+    SavingAccount.prototype.getAccountInfo = function () {
+    };
     return SavingAccount;
 }(BankAccount));
 export { SavingAccount };

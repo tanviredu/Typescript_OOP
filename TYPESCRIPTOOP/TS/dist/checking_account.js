@@ -29,12 +29,17 @@ var __extends = (this && this.__extends) || (function () {
 //     }
 // }
 import { BankAccount } from "./bank_account";
+import { AccountType } from "./enums";
 var CheckingAccount = /** @class */ (function (_super) {
     __extends(CheckingAccount, _super);
     function CheckingAccount(accountSettings) {
-        return _super.call(this, accountSettings) || this;
+        var _this = _super.call(this, accountSettings) || this;
+        // implementing the abstect
+        _this.accountType = AccountType.Checking;
+        return _this;
         // other code here
     }
+    CheckingAccount.prototype.getAccountInfo = function () { };
     return CheckingAccount;
 }(BankAccount));
 export { CheckingAccount };

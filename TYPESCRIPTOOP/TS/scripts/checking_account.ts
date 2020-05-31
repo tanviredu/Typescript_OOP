@@ -22,12 +22,18 @@
 // }
 
 import {BankAccount} from "./bank_account";
+import { AccountType } from "./enums";
 
 export class CheckingAccount extends BankAccount{
+    
+    // implementing the abstect
+    accountType = AccountType.Checking;
     
     constructor(accountSettings:any){
         super(accountSettings);
         // other code here
     }
+    
+    getAccountInfo(){}
 }
 

@@ -1,10 +1,13 @@
 import {AccountType} from './enums';
 
-export class BankAccount{
+export abstract class BankAccount{
     private _balance = 0;
     id:number;
     title:string;
-    accountType:AccountType;
+    // if any abstratc class has abstract field and method
+    // it must be implementd in the inherited class
+    
+    abstract accountType:AccountType;
     
     // constructor takes a json thats why any type
     constructor(accountSettings:any){
@@ -12,6 +15,10 @@ export class BankAccount{
         this.title = accountSettings.title;
         this.balance = accountSettings.balance;
     }
+    
+    
+    // adding a abstract method definition
+    abstract getAccountInfo():any;
     
     // setting getter and setter for the 
     // account
