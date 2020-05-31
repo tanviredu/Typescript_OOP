@@ -21,6 +21,13 @@ export class SavingAccount extends BankAccount{
         
     }
     
+    // we override the default deposit function
+    // for the BankAccount
+    deposit(amount:number){
+        var newAmount:number = amount+(amount*(this._interestRate/100));
+        this.balance+=newAmount;
+    }
+    
     
     // make a function that will add interest
     // and increase the balance
