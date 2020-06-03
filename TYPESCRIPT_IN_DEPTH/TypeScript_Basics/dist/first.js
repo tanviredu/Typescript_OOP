@@ -11,10 +11,10 @@ var LibraryManager = (function () {
     }
     LibraryManager.prototype.getAllBook = function () {
         this.books = [
-            { title: "annodin", author: "humayon ahmead", avilable: true, category: Category.Fiction },
-            { title: "A Frawell", author: "Ernest", avilable: false, category: Category.Fiction },
-            { title: "I know the Cage bird sings", author: "Maya", avilable: true, category: Category.Poetry },
-            { title: "its 3 pm lets kill some people", author: "Aaaron", avilable: true, category: Category.History },
+            { id: 1, title: "annodin", author: "humayon ahmead", avilable: true, category: Category.Fiction },
+            { id: 2, title: "A Frawell", author: "Ernest", avilable: false, category: Category.Fiction },
+            { id: 3, title: "I know the Cage bird sings", author: "Maya", avilable: true, category: Category.Poetry },
+            { id: 4, title: "its 3 pm lets kill some people", author: "Aaaron", avilable: true, category: Category.History },
         ];
         return this.books;
     };
@@ -48,6 +48,10 @@ var LibraryManager = (function () {
             console.log(title);
         }
     };
+    LibraryManager.prototype.getBooksById = function (id) {
+        var allBooks = this.getAllBook();
+        return allBooks.filter(function (book) { return book.id === id; })[0];
+    };
     return LibraryManager;
 }());
 var lb = new LibraryManager();
@@ -57,4 +61,5 @@ var num = Category.Fiction;
 var alltitle = lb.getBookCategoryByTitle(num);
 console.log(alltitle);
 lb.LogBookTitles(alltitle);
+console.log(lb.getBooksById(1));
 //# sourceMappingURL=first.js.map

@@ -19,10 +19,10 @@ class LibraryManager{
 
     getAllBook():any{
          this.books = [
-            {title:"annodin",author:"humayon ahmead",avilable:true,category:Category.Fiction},
-            {title:"A Frawell",author:"Ernest",avilable:false,category:Category.Fiction},
-            {title:"I know the Cage bird sings",author:"Maya",avilable:true,category:Category.Poetry},
-            {title:"its 3 pm lets kill some people",author:"Aaaron",avilable:true,category:Category.History},
+            {id:1,title:"annodin",author:"humayon ahmead",avilable:true,category:Category.Fiction},
+            {id:2,title:"A Frawell",author:"Ernest",avilable:false,category:Category.Fiction},
+            {id:3,title:"I know the Cage bird sings",author:"Maya",avilable:true,category:Category.Poetry},
+            {id:4,title:"its 3 pm lets kill some people",author:"Aaaron",avilable:true,category:Category.History},
 
         ];
 
@@ -68,6 +68,22 @@ class LibraryManager{
         }
     }
 
+    getBooksById(id:number){
+        const  allBooks = this.getAllBook();
+
+        /*
+            we can use the lambda  expression
+            in c# in the Typescript
+
+         */
+
+
+        return allBooks.filter(book => book.id ===id)[0];
+
+    }
+
+
+
 
     }
 
@@ -80,6 +96,7 @@ var num:Category =Category.Fiction;
 var alltitle:string[] = lb.getBookCategoryByTitle(num);
 console.log(alltitle);
 lb.LogBookTitles(alltitle);
+console.log(lb.getBooksById(1));
 
 
 
