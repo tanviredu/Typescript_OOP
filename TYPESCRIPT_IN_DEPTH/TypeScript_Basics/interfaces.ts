@@ -34,3 +34,14 @@ export interface  Librarian extends Person{
 
 }
 
+/*
+    ADDIGN GENERIC INTERFACE
+    ANY TYPE IS ACCEPTTED BY THE GENERIC CLASS
+ */
+
+export interface  Magazine {
+    title:string;
+    publisher:string;
+
+}
+
