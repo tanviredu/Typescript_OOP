@@ -28,8 +28,8 @@ class LibraryManager{
 
         return this.books;
     }
-
-    LogFirstAvilable(book:any):void{
+    // setting default value
+    LogFirstAvilable(book:any = this.getAllBook()):void{
         this.numberofBooks = book.length;
         this.firstAvilable = "";
         // you have to use of
@@ -48,7 +48,7 @@ class LibraryManager{
 
     }
 
-    getBookCategoryByTitle(categoryFilter:Category):Array<string>{
+    getBookCategoryByTitle(categoryFilter:Category = Category.Fiction):Array<string>{
         console.log("Getting Books in Category "+Category[categoryFilter]);
         const allBooks = this.getAllBook();
         const filteredTitles:string[] = [];
@@ -68,24 +68,110 @@ class LibraryManager{
         }
     }
 
+    PublicationMessage(year:number):string{
+        return "date published "+year;
+    }
+
     getBooksById(id:number){
         const  allBooks = this.getAllBook();
 
         /*
             we can use the lambda  expression
             in c# in the Typescript
+            you can use the labda function
+            to query anu list of object
 
          */
+
 
 
         return allBooks.filter(book => book.id ===id)[0];
 
     }
 
-
-
+    createCustomerId(name:string,id:number):string{
+        return name+id;
 
     }
+
+    createCustomer(name:string,age?:number,city?:string){
+        console.log('Creating customer' + name);
+        if(age){
+            console.log("Age "+age);
+        }
+        if(city){
+            console.log("City" +city)
+        }
+    }
+
+    Checkoutbooks(customer:string,...bookIDS:number[]):string[]{
+
+        console.log("checking out books for "+customer);
+        var booksCheckout:string[] = [];
+
+        for(var id of bookIDS){
+            var book =this.getBooksById(id);
+            if(book.avilable){
+                booksCheckout.push(book.title);
+            }
+        }
+        return booksCheckout;
+    }
+
+    /*
+    REMEMBER IN TYPE SCRIPT FOR METHOD OVERLOADING
+    YOU FIRST GIVE THE  DEFINITION
+    AND THEN JUST ONE IMPLEMENTATION
+     */
+
+
+
+    // this is the two overload
+    //1)
+    getTitles(author:string):string[];
+    //2)
+    getTitles(avilable:boolean):string[];
+
+
+
+
+    // and this is the comon implmntation
+    // that apply both of them
+    getTitles(bookProperty:any):string[]{
+        const allbooks = this.getAllBook();
+        var title:string[] = [];
+        //1)
+        if(typeof bookProperty == 'string'){
+
+            // this type the book property
+            // is a author name
+
+            for (var book of allbooks){
+                if(book.author === bookProperty){
+                    title.push(book.title);
+                }
+            }
+
+        }
+        else if(typeof  bookProperty == 'boolean'){
+            // get books by aviliablity
+
+            for(var book of allbooks){
+                if(book.avilable == bookProperty){
+                    title.push(book.title);
+                }
+            }
+        }
+
+        return title;
+    }
+}
+
+
+
+
+
+
 
 
 
