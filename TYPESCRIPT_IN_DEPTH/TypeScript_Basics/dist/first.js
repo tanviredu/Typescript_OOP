@@ -1,11 +1,4 @@
-var Category;
-(function (Category) {
-    Category[Category["BioGraphy"] = 0] = "BioGraphy";
-    Category[Category["Poetry"] = 1] = "Poetry";
-    Category[Category["Fiction"] = 2] = "Fiction";
-    Category[Category["History"] = 3] = "History";
-    Category[Category["Children"] = 4] = "Children";
-})(Category || (Category = {}));
+import { Category } from "./enums";
 var LibraryManager = (function () {
     function LibraryManager() {
     }
@@ -106,6 +99,9 @@ var LibraryManager = (function () {
         }
         return title;
     };
+    LibraryManager.prototype.printBoook = function (book) {
+        console.log(book.title + "By" + book.author);
+    };
     return LibraryManager;
 }());
 var lb = new LibraryManager();
@@ -116,4 +112,21 @@ var alltitle = lb.getBookCategoryByTitle(num);
 console.log(alltitle);
 lb.LogBookTitles(alltitle);
 console.log(lb.getBooksById(1));
+var logdamage;
+logdamage = function (damage) {
+    console.log("Damage Reported " + damage);
+};
+var favauthor = {
+    email: "ornobtanvir.git@gmail.com",
+    name: "Tanvir Rahman",
+    numBookPublished: 100
+};
+var favLibrarian = {
+    assistCustomer: function (custName) {
+        console.log("Assisting " + custName);
+    },
+    department: "EEE",
+    email: "lb1@gmail.com",
+    name: "Ornob Tanvir"
+};
 //# sourceMappingURL=first.js.map

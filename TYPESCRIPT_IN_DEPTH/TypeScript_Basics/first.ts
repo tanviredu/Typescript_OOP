@@ -1,14 +1,8 @@
-
-enum Category{
-    // it will assign number
-    // to each category
-   BioGraphy,
-   Poetry,
-   Fiction,
-   History,
-   Children
-
-}
+import {Category} from "./enums";
+import {Book} from "./interfaces"
+import {DamagedLogger} from "./interfaces";
+import {author} from "./interfaces"
+import {Librarian} from "./interfaces"
 
 class LibraryManager{
 
@@ -17,7 +11,9 @@ class LibraryManager{
      firstAvilable:string;
 
 
-    getAllBook():any{
+     // implement the book
+    // we get the book list so book[]
+    getAllBook():Book[]{
          this.books = [
             {id:1,title:"annodin",author:"humayon ahmead",avilable:true,category:Category.Fiction},
             {id:2,title:"A Frawell",author:"Ernest",avilable:false,category:Category.Fiction},
@@ -72,7 +68,10 @@ class LibraryManager{
         return "date published "+year;
     }
 
-    getBooksById(id:number){
+
+    // implement a single book
+
+    getBooksById(id:number):Book{
         const  allBooks = this.getAllBook();
 
         /*
@@ -84,6 +83,7 @@ class LibraryManager{
          */
 
 
+        // it return a Book object
 
         return allBooks.filter(book => book.id ===id)[0];
 
@@ -165,6 +165,10 @@ class LibraryManager{
 
         return title;
     }
+
+    printBoook(book:Book):void{
+        console.log(book.title + "By" + book.author);
+    }
 }
 
 
@@ -186,3 +190,25 @@ console.log(lb.getBooksById(1));
 
 
 
+
+// this can be applied too
+var logdamage :DamagedLogger;
+logdamage = (damage:string) =>{
+    console.log("Damage Reported "+damage);
+}
+
+var favauthor:author = {
+    email: "ornobtanvir.git@gmail.com",
+    name: "Tanvir Rahman",
+    numBookPublished: 100
+
+}
+
+var favLibrarian:Librarian = {
+    assistCustomer(custName: string): void {
+        console.log("Assisting "+custName);
+    }, department: "EEE",
+    email: "lb1@gmail.com",
+    name: "Ornob Tanvir"
+
+}
